@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>MODAM · 강의 의뢰 CONTACT</title>
+<meta name="description" content="MODAM 강의 의뢰 안내 — 진행 방식과 Google Form 의뢰 방법." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Gaegu:wght@400;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="index.html"><span class="stamp">모</span><b>MODAM</b></a>
+    <button class="nav-toggle" id="navToggle" aria-label="메뉴 열기" aria-expanded="false">☰</button>
+    <nav class="nav-menu" id="navMenu">
+        <a href="index.html">HOME</a>
+        <a href="about.html">ABOUT</a>
+        <a href="lectures.html">LECTURES</a>
+        <a href="classroom.html">CLASSROOM</a>
+        <a href="contact.html" class="active">CONTACT</a>
+    </nav>
+    <a class="btn btn-rose nav-cta" href="https://docs.google.com/forms/d/e/1FAIpQLSez-3oG_BZ2HWazTK4OoEIVhB53PXtMMl8bynGceaNKxIm9Ig/viewform" target="_blank" rel="noopener">강의 의뢰하기</a>
+  </div>
+</header>
+
+<main id="top">
+<section id="process" class="process">
+    <div class="wrap">
+      <div class="head reveal">
+        <span class="eyebrow">진행 방식</span>
+        <h2>문의부터 자료 제공까지,<br>매끄럽게 진행돼요.</h2>
+        <p>의뢰 이후 어떻게 준비되는지 미리 확인하세요. 각 단계마다 담당자와 함께 조율합니다.</p>
+      </div>
+      <div class="steps">
+        <div class="step reveal"><div class="no">01<small>문의</small></div><h3>문의·상담</h3><p>대상·인원·목적을 듣고 가능한 일정과 방향을 함께 잡습니다.</p></div>
+        <div class="step reveal"><div class="no">02<small>설계</small></div><h3>커리큘럼 협의</h3><p>기관 상황에 맞춰 차시별 내용과 실습 과제를 맞춤 설계합니다.</p></div>
+        <div class="step reveal"><div class="no">03<small>진행</small></div><h3>강의 진행</h3><p>이론은 짧게, 실습은 바로. 참여자가 직접 결과물을 만듭니다.</p></div>
+        <div class="step reveal"><div class="no">04<small>지원</small></div><h3>자료·후속 지원</h3><p>강의 특성에 맞춰 실습 자료와 학습 공간을 제공합니다.</p></div>
+      </div>
+    </div>
+  </section>
+
+
+  <section>
+    <div class="wrap">
+      <div class="contact-cta reveal">
+        <div class="mini">강의 의뢰하기</div>
+        <h3>Google Form으로 간편하게 의뢰하세요.</h3>
+        <p>대상·인원·희망 일정·교육 목적을 남겨 주시면, 담당자가 확인 후 가능한 일정과 방향을 회신해 드립니다.</p>
+        <a class="btn btn-rose" href="https://docs.google.com/forms/d/e/1FAIpQLSez-3oG_BZ2HWazTK4OoEIVhB53PXtMMl8bynGceaNKxIm9Ig/viewform" target="_blank" rel="noopener">강의 의뢰 양식 열기 →</a>
+        <div class="small-note">새 창에서 Google Form이 열립니다 · 보통 1~2일 내 회신</div>
+      </div>
+      <ul class="contact-points reveal">
+        <li>대상·인원·목적만 알려주셔도 상담이 시작됩니다.</li>
+        <li>기관 상황에 맞춰 차시별 커리큘럼을 맞춤 설계합니다.</li>
+        <li>강의 특성에 맞춰 실습 자료와 학습 공간을 제공합니다.</li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot-in">
+    <div>
+      <div class="foot-brand"><span class="stamp">모</span> MODAM</div>
+      <small>AI · Google Workspace · 디지털 리터러시 교육 — 모든 수업에 AI<br>© 2026 MODAM. All rights reserved.</small>
+    </div>
+    <div class="foot-links">
+      <a href="index.html">HOME</a>
+      <a href="about.html">ABOUT</a>
+      <a href="lectures.html">LECTURES</a>
+      <a href="classroom.html">CLASSROOM</a>
+      <a href="contact.html">CONTACT</a>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSez-3oG_BZ2HWazTK4OoEIVhB53PXtMMl8bynGceaNKxIm9Ig/viewform" target="_blank" rel="noopener">강의 의뢰하기</a>
+    </div>
+  </div>
+</footer>
+
+<button class="top-btn" id="topBtn" aria-label="맨 위로 이동"><span>↑</span><small>TOP</small></button>
+<script>
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold:.12 });
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+
+  var topBtn=document.getElementById('topBtn');
+  window.addEventListener('scroll',function(){
+    if(window.scrollY>320) topBtn.classList.add('show'); else topBtn.classList.remove('show');
+  });
+  topBtn.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});
+
+  var navToggle=document.getElementById('navToggle'), navMenu=document.getElementById('navMenu');
+  if(navToggle){ navToggle.addEventListener('click',function(){
+    var open=navMenu.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', open?'true':'false');
+    navToggle.textContent = open ? '✕' : '☰';
+  }); }
+</script>
+</body>
+</html>
