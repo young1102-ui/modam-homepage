@@ -10,6 +10,14 @@
 <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Gaegu:wght@400;700&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
 <link rel="stylesheet" href="styles.css" />
+
+<style>
+  .resource-link{cursor:pointer}
+  .resource-link:focus-visible{
+    outline:3px solid var(--rose);
+    outline-offset:4px;
+  }
+</style>
 </head>
 <body>
 
@@ -21,6 +29,7 @@
         <a href="index.html">HOME</a>
         <a href="about.html">ABOUT</a>
         <a href="lectures.html">LECTURES</a>
+        <a href="https://lab.young2026.com">LAB</a>
         <a href="classroom.html" class="active">CLASSROOM</a>
         <a href="contact.html">CONTACT</a>
     </nav>
@@ -39,12 +48,17 @@
       </div>
 
       <div class="res-grid">
-        <div class="res private reveal">
+        <div class="res private reveal resource-link"
+             role="button"
+             tabindex="0"
+             aria-label="수업자료실 열기"
+             onclick="openClassSite()"
+             onkeydown="if(event.key==='Enter' || event.key===' '){event.preventDefault();openClassSite();}">
           <span class="ic">▤</span>
           <div>
             <h3>수업자료실 · Google Sites</h3>
             <p>Google Sites를 이용하여 강의자료, 실습 링크와 참고 문서를 차시별로 정리해 제공합니다.</p>
-            <span class="go">강의별 주소 별도 안내</span>
+            <span class="go">수업자료실 열기 →</span>
           </div>
         </div>
 
@@ -78,6 +92,7 @@
       <a href="index.html">HOME</a>
       <a href="about.html">ABOUT</a>
       <a href="lectures.html">LECTURES</a>
+        <a href="https://lab.young2026.com">LAB</a>
       <a href="classroom.html">CLASSROOM</a>
       <a href="contact.html">CONTACT</a>
       <a href="https://docs.google.com/forms/d/e/1FAIpQLSez-3oG_BZ2HWazTK4OoEIVhB53PXtMMl8bynGceaNKxIm9Ig/viewform" target="_blank" rel="noopener">강의 의뢰하기</a>
@@ -87,6 +102,18 @@
 
 <button class="top-btn" id="topBtn" aria-label="맨 위로 이동"><span>↑</span><small>TOP</small></button>
 <script>
+  function openClassSite(){
+    var password = window.prompt('수업자료실 비밀번호를 입력해 주세요.');
+    if(password === null) return;
+
+    if(password.trim() === '2026'){
+      window.open('https://class.young2026.com', '_blank', 'noopener');
+    }else{
+      window.alert('비밀번호가 맞지 않습니다.');
+    }
+  }
+
+
   var io = new IntersectionObserver(function(entries){
     entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
   }, { threshold:.12 });
