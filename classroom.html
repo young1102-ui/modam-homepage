@@ -38,6 +38,16 @@
   .password-head strong{font-family:"Gowun Batang",serif;font-size:20px;color:#2c251f}
 </style>
 
+
+<style>
+  .material-room-card{text-decoration:none;color:inherit;cursor:pointer}
+  .material-modal{position:fixed;inset:0;z-index:10000;display:none;align-items:center;justify-content:center;padding:22px}
+  .material-modal.show{display:flex}
+  .material-backdrop{position:absolute;inset:0;background:rgba(31,27,22,.48);backdrop-filter:blur(5px)}
+  .material-panel{position:relative;width:min(430px,100%);background:#fffdf8;border:1px solid #eadfce;border-radius:28px;padding:34px;box-shadow:0 28px 70px rgba(34,28,21,.22)}
+  .material-panel h2{font-family:"Gowun Batang",serif;font-size:28px;margin:0 0 8px;color:#211b17}
+</style>
+
 </head>
 <body>
 
@@ -68,14 +78,17 @@
       </div>
 
       <div class="res-grid">
-        <div class="res private reveal">
+        <a class="res private reveal material-room-card"
+           href="#"
+           id="materialRoomCard"
+           aria-label="수업자료실 열기">
           <span class="ic">▤</span>
           <div>
-            <h3>수업자료실 · Google Sites</h3>
-            <p>Google Sites를 이용하여 강의자료, 실습 링크와 참고 문서를 차시별로 정리해 제공합니다.</p>
-            <span class="go">강의별 주소 별도 안내</span>
+            <h3>수업자료실</h3>
+            <p>Google Sites를 이용하여 강의자료, 실습 링크를 제공합니다.</p>
+            <span class="go">비밀번호 별도 안내</span>
           </div>
-        </div>
+        </a>
 
         <a class="res classroom reveal review-room-card"
            href="#"
@@ -202,6 +215,28 @@
     <p class="auth-note">
       회원가입 정보는 수강생 확인과 복습 공간 이용을 위해 사용됩니다.
     </p>
+  </section>
+</div>
+
+
+<!-- 수업자료실 비밀번호 -->
+<div class="material-modal" id="materialModal" aria-hidden="true">
+  <div class="material-backdrop" data-material-close></div>
+  <section class="material-panel" role="dialog" aria-modal="true" aria-labelledby="materialTitle">
+    <button class="auth-close" type="button" data-material-close aria-label="닫기">×</button>
+    <div class="auth-brand">수업자료실</div>
+    <h2 id="materialTitle">비밀번호를 입력해 주세요</h2>
+    <p class="auth-lead">강의자료와 참고 문서는 수강생 전용입니다.</p>
+
+    <form class="auth-form" id="materialPasswordForm">
+      <label>
+        <span>입장 비밀번호</span>
+        <input type="password" id="materialPassword" inputmode="numeric" autocomplete="off" placeholder="비밀번호 입력" required>
+      </label>
+      <button class="auth-primary" type="submit">수업자료실 입장</button>
+    </form>
+
+    <p class="auth-message" id="materialMessage" aria-live="polite"></p>
   </section>
 </div>
 
@@ -644,5 +679,56 @@
     return map[code] || "처리 중 문제가 발생했습니다. 잠시 후 다시 시도해 주세요.";
   }
 </script>
+
+<script>
+  // ★ 자주 바꿀 비밀번호는 아래 한 줄만 수정하면 됩니다.
+  const MATERIAL_ROOM_PASSWORD = "0915";
+  const MATERIAL_ROOM_URL = "https://class.young2026.com";
+
+  const materialRoomCard = document.getElementById("materialRoomCard");
+  const materialModal = document.getElementById("materialModal");
+  const materialPasswordForm = document.getElementById("materialPasswordForm");
+  const materialPasswordInput = document.getElementById("materialPassword");
+  const materialMessage = document.getElementById("materialMessage");
+
+  function openMaterialModal(){
+    materialModal.classList.add("show");
+    materialModal.setAttribute("aria-hidden","false");
+    materialPasswordInput.value = "";
+    materialMessage.textContent = "";
+    document.body.style.overflow = "hidden";
+    setTimeout(() => materialPasswordInput.focus(), 50);
+  }
+
+  function closeMaterialModal(){
+    materialModal.classList.remove("show");
+    materialModal.setAttribute("aria-hidden","true");
+    materialMessage.textContent = "";
+    document.body.style.overflow = "";
+  }
+
+  materialRoomCard.addEventListener("click", function(e){
+    e.preventDefault();
+    openMaterialModal();
+  });
+
+  document.querySelectorAll("[data-material-close]").forEach(function(el){
+    el.addEventListener("click", closeMaterialModal);
+  });
+
+  materialPasswordForm.addEventListener("submit", function(e){
+    e.preventDefault();
+
+    if(materialPasswordInput.value === MATERIAL_ROOM_PASSWORD){
+      closeMaterialModal();
+      window.open(MATERIAL_ROOM_URL, "_blank", "noopener");
+    }else{
+      materialMessage.textContent = "비밀번호가 맞지 않습니다.";
+      materialMessage.className = "auth-message error";
+      materialPasswordInput.select();
+    }
+  });
+</script>
+
 </body>
 </html>
