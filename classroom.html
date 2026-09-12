@@ -3,21 +3,21 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>MODAM · 수강생 전용 CLASSROOM</title>
-<meta name="description" content="MODAM 수강생 전용 자료실과 온라인 실습교실 안내." />
+<title>MODAM · 수업 복습 공간</title>
+<meta name="description" content="수강생 회원가입 및 로그인 후 이용하는 MODAM 수업 복습 공간입니다." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Gaegu:wght@400;700&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
 <link rel="stylesheet" href="styles.css" />
 
-<style>
-  .resource-link{cursor:pointer}
-  .resource-link:focus-visible{
-    outline:3px solid var(--rose);
-    outline-offset:4px;
-  }
-</style>
+
+
+
+
+
+
+
 </head>
 <body>
 
@@ -29,7 +29,6 @@
         <a href="index.html">HOME</a>
         <a href="about.html">ABOUT</a>
         <a href="lectures.html">LECTURES</a>
-        <a href="https://lab.young2026.com" target="_blank" rel="noopener">LAB</a>
         <a href="classroom.html" class="active">CLASSROOM</a>
         <a href="contact.html">CONTACT</a>
     </nav>
@@ -42,43 +41,125 @@
     <div class="wrap">
       <div class="head reveal">
         <span class="eyebrow">수강생 전용 · CLASSROOM</span>
-        <h2>수업에 필요한 자료와<br>실습 공간을 안내해 드려요.</h2>
-        <p>이 공간에는 실제 강의자료와 실습 링크가 포함되어 있어 <b style="color:var(--ink)">해당 강의 수강생에게만 접근 권한을 제공합니다.</b> 사전에 등록된 Google 계정으로 이용합니다.</p>
-        <span class="access-badge">등록된 수강생만 이용 가능</span>
+        <h2>수업에서 배운 내용을<br>편하게 다시 만나보세요.</h2>
+        <p>수업에서 다룬 내용과 실습 자료를 차곡차곡 모아두는 공간입니다. <b style="color:var(--ink)">회원가입 또는 로그인 후 이용할 수 있습니다.</b></p>
+        <span class="access-badge">🔒 회원가입 · 로그인 후 이용 가능</span>
+        <button class="account-open-btn" id="accountOpenBtn" type="button">내 계정</button>
       </div>
 
       <div class="res-grid">
-        <div class="res private reveal resource-link"
-             role="button"
-             tabindex="0"
-             aria-label="수업자료실 열기"
-             onclick="openClassSite()"
-             onkeydown="if(event.key==='Enter' || event.key===' '){event.preventDefault();openClassSite();}">
+        <div class="res private reveal">
           <span class="ic">▤</span>
           <div>
             <h3>수업자료실 · Google Sites</h3>
             <p>Google Sites를 이용하여 강의자료, 실습 링크와 참고 문서를 차시별로 정리해 제공합니다.</p>
-            <span class="go">수업자료실 열기 →</span>
+            <span class="go">강의별 주소 별도 안내</span>
           </div>
         </div>
 
-        <div class="res classroom reveal">
-          <span class="ic">✓</span>
+        <a class="res classroom reveal review-room-card"
+           href="#"
+           id="reviewRoomCard"
+           aria-label="수업 복습 공간 열기">
+          <span class="ic">↻</span>
           <div>
-            <h3>온라인 실습교실 · Google Classroom</h3>
-            <p>과제, 실습, 제출과 피드백을 진행하는 수강생 전용 온라인 교실입니다.</p>
-            <span class="go">강의별 초대 링크 별도 안내</span>
+            <h3>수업 복습 공간</h3>
+            <p>수업에서 배운 내용과 실습 자료, 참고 링크를 다시 확인할 수 있는 수강생 전용 복습 공간입니다.</p>
+            <span class="go">🔒 회원가입 또는 로그인 후 입장하기 →</span>
           </div>
-        </div>
+        </a>
       </div>
 
       <div class="restricted-note">
         <b>🔒 수강생 전용 안내</b><br>
-        실제 수업 자료가 포함된 공간입니다. 강의 전 사전에 등록한 Google 계정에만 열람·참여 권한을 부여하며,
-        과정별 자료실과 실습교실 주소는 강의 기간 중 해당 수강생에게 안내합니다.
+        수업 복습 공간에는 강의에서 사용한 자료와 실습 링크가 포함되어 있습니다.
+        회원가입 또는 로그인 후 이용할 수 있으며, 수강생에게 필요한 자료를 과정별로 차곡차곡 제공합니다.
       </div>
     </div>
   </section>
+
+
+<!-- 수업 복습 공간 로그인 / 회원가입 -->
+<div class="auth-modal" id="authModal" aria-hidden="true">
+  <div class="auth-backdrop" data-auth-close></div>
+
+  <section class="auth-panel" role="dialog" aria-modal="true" aria-labelledby="authTitle">
+    <button class="auth-close" type="button" data-auth-close aria-label="닫기">×</button>
+
+    <div class="auth-brand">수업 복습 공간</div>
+    <h2 id="authTitle">수강생 로그인</h2>
+    <p class="auth-lead">수업 자료와 실습 내용을 다시 확인하려면 로그인해 주세요.</p>
+
+    <div class="auth-tabs" role="tablist">
+      <button class="auth-tab active" type="button" id="loginTab">로그인</button>
+      <button class="auth-tab" type="button" id="signupTab">회원가입</button>
+    </div>
+
+    <form class="auth-form" id="loginForm">
+      <label>
+        <span>이메일</span>
+        <input type="email" id="loginEmail" autocomplete="email" placeholder="example@gmail.com" required>
+      </label>
+      <label>
+        <span>비밀번호</span>
+        <input type="password" id="loginPassword" autocomplete="current-password" placeholder="비밀번호 입력" required>
+      </label>
+      <button class="auth-primary" type="submit">로그인하고 복습 공간 입장</button>
+    </form>
+
+    <form class="auth-form hidden" id="signupForm">
+      <label>
+        <span>이름</span>
+        <input type="text" id="signupName" autocomplete="name" placeholder="이름 입력" required>
+      </label>
+      <label>
+        <span>이메일</span>
+        <input type="email" id="signupEmail" autocomplete="email" placeholder="example@gmail.com" required>
+      </label>
+      <label>
+        <span>비밀번호</span>
+        <input type="password" id="signupPassword" autocomplete="new-password" placeholder="6자 이상" minlength="6" required>
+      </label>
+      <label>
+        <span>비밀번호 확인</span>
+        <input type="password" id="signupPassword2" autocomplete="new-password" placeholder="비밀번호 다시 입력" minlength="6" required>
+      </label>
+      <button class="auth-primary" type="submit">회원가입하고 입장</button>
+    </form>
+
+    <div class="auth-divider"><span>또는</span></div>
+
+    <button class="google-login" id="googleLoginBtn" type="button">
+      <span class="google-g">G</span>
+      Google 계정으로 계속하기
+    </button>
+
+    <p class="auth-message" id="authMessage" aria-live="polite"></p>
+
+
+    <div class="account-panel hidden" id="accountPanel">
+      <div class="account-card">
+        <div class="account-avatar" id="accountAvatar">👤</div>
+        <div>
+          <strong id="accountName">수강생</strong>
+          <p id="accountEmail"></p>
+        </div>
+      </div>
+
+      <button class="auth-primary" id="enterReviewBtn" type="button">수업 복습 공간 입장</button>
+      <button class="auth-secondary" id="logoutBtn" type="button">로그아웃</button>
+      <button class="auth-danger" id="deleteAccountBtn" type="button">회원탈퇴</button>
+
+      <p class="auth-note">
+        회원탈퇴 시 Firebase 계정과 저장된 이름·이메일 정보가 함께 삭제됩니다.
+      </p>
+    </div>
+
+    <p class="auth-note">
+      회원가입 정보는 수강생 확인과 복습 공간 이용을 위해 사용됩니다.
+    </p>
+  </section>
+</div>
 
 </main>
 
@@ -92,7 +173,6 @@
       <a href="index.html">HOME</a>
       <a href="about.html">ABOUT</a>
       <a href="lectures.html">LECTURES</a>
-        <a href="https://lab.young2026.com" target="_blank" rel="noopener">LAB</a>
       <a href="classroom.html">CLASSROOM</a>
       <a href="contact.html">CONTACT</a>
       <a href="https://docs.google.com/forms/d/e/1FAIpQLSez-3oG_BZ2HWazTK4OoEIVhB53PXtMMl8bynGceaNKxIm9Ig/viewform" target="_blank" rel="noopener">강의 의뢰하기</a>
@@ -102,18 +182,6 @@
 
 <button class="top-btn" id="topBtn" aria-label="맨 위로 이동"><span>↑</span><small>TOP</small></button>
 <script>
-  function openClassSite(){
-    var password = window.prompt('수업자료실 비밀번호를 입력해 주세요.');
-    if(password === null) return;
-
-    if(password.trim() === '0910'){
-      window.open('https://class.young2026.com', '_blank', 'noopener');
-    }else{
-      window.alert('비밀번호가 맞지 않습니다.');
-    }
-  }
-
-
   var io = new IntersectionObserver(function(entries){
     entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
   }, { threshold:.12 });
@@ -131,6 +199,313 @@
     navToggle.setAttribute('aria-expanded', open?'true':'false');
     navToggle.textContent = open ? '✕' : '☰';
   }); }
+</script>
+
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
+  import {
+    getAuth,
+    onAuthStateChanged,
+    setPersistence,
+    browserLocalPersistence,
+    createUserWithEmailAndPassword,
+    signInWithEmailAndPassword,
+    GoogleAuthProvider,
+    signInWithPopup,
+    updateProfile,
+    signOut,
+    deleteUser,
+    reauthenticateWithCredential,
+    EmailAuthProvider
+  } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
+  import {
+    getFirestore,
+    doc,
+    setDoc,
+    deleteDoc,
+    serverTimestamp
+  } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyBLEEnZPMhqdTF_4hJhkt9MaJ4K_v30U0I",
+    authDomain: "young2026-reviewroom.firebaseapp.com",
+    projectId: "young2026-reviewroom",
+    storageBucket: "young2026-reviewroom.firebasestorage.app",
+    messagingSenderId: "380717731680",
+    appId: "1:380717731680:web:89e29d3921dc46ace31805",
+    measurementId: "G-8P5XCDBRZ6"
+  };
+
+  const REVIEW_ROOM_URL = "https://sites.google.com/view/review-room/%ED%99%88";
+
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+  const db = getFirestore(app);
+
+  // 같은 브라우저에서는 로그인 상태 유지
+  await setPersistence(auth, browserLocalPersistence);
+
+  const modal = document.getElementById("authModal");
+  const reviewCard = document.getElementById("reviewRoomCard");
+  const loginTab = document.getElementById("loginTab");
+  const signupTab = document.getElementById("signupTab");
+  const loginForm = document.getElementById("loginForm");
+  const signupForm = document.getElementById("signupForm");
+  const msg = document.getElementById("authMessage");
+  const googleBtn = document.getElementById("googleLoginBtn");
+  const accountPanel = document.getElementById("accountPanel");
+  const accountName = document.getElementById("accountName");
+  const accountEmail = document.getElementById("accountEmail");
+  const enterReviewBtn = document.getElementById("enterReviewBtn");
+  const logoutBtn = document.getElementById("logoutBtn");
+  const deleteAccountBtn = document.getElementById("deleteAccountBtn");
+  const accountOpenBtn = document.getElementById("accountOpenBtn");
+
+  let currentUser = null;
+
+  function setMessage(text="", type=""){
+    msg.textContent = text;
+    msg.className = "auth-message" + (type ? " " + type : "");
+  }
+
+  function openModal(){
+    modal.classList.add("show");
+    modal.setAttribute("aria-hidden","false");
+    document.body.style.overflow = "hidden";
+    if (currentUser) showAccountPanel(currentUser);
+    else showAuthForms();
+  }
+
+  function closeModal(){
+    modal.classList.remove("show");
+    modal.setAttribute("aria-hidden","true");
+    document.body.style.overflow = "";
+    setMessage();
+  }
+
+  function switchTab(mode){
+    const login = mode === "login";
+    loginTab.classList.toggle("active", login);
+    signupTab.classList.toggle("active", !login);
+    loginForm.classList.toggle("hidden", !login);
+    signupForm.classList.toggle("hidden", login);
+    document.getElementById("authTitle").textContent = login ? "수강생 로그인" : "수강생 회원가입";
+    setMessage();
+  }
+
+  function showAuthForms(){
+    document.querySelector(".auth-tabs").style.display = "";
+    loginForm.classList.remove("hidden");
+    signupForm.classList.add("hidden");
+    document.querySelector(".auth-divider").style.display = "";
+    googleBtn.style.display = "";
+    accountPanel.classList.add("hidden");
+    document.getElementById("authTitle").textContent = "수강생 로그인";
+  }
+
+  function showAccountPanel(user){
+    document.querySelector(".auth-tabs").style.display = "none";
+    loginForm.classList.add("hidden");
+    signupForm.classList.add("hidden");
+    document.querySelector(".auth-divider").style.display = "none";
+    googleBtn.style.display = "none";
+    accountPanel.classList.remove("hidden");
+    accountName.textContent = user.displayName || "수강생";
+    accountEmail.textContent = user.email || "";
+    document.getElementById("authTitle").textContent = "내 계정";
+    setMessage();
+  }
+
+  function goReviewRoom(){
+    window.open(REVIEW_ROOM_URL, "_blank", "noopener");
+  }
+
+  onAuthStateChanged(auth, (user) => {
+    currentUser = user;
+    if (modal.classList.contains("show")) {
+      if (user) showAccountPanel(user);
+      else showAuthForms();
+    }
+  });
+
+
+  accountOpenBtn.addEventListener("click", () => {
+    if (currentUser) {
+      showAccountPanel(currentUser);
+      openModal();
+    } else {
+      switchTab("login");
+      openModal();
+    }
+  });
+
+  reviewCard.addEventListener("click", (e) => {
+    e.preventDefault();
+    if (currentUser) {
+      goReviewRoom();
+    } else {
+      switchTab("login");
+      openModal();
+    }
+  });
+
+  document.querySelectorAll("[data-auth-close]").forEach(el => el.addEventListener("click", closeModal));
+  document.addEventListener("keydown", e => { if(e.key === "Escape") closeModal(); });
+  loginTab.addEventListener("click", () => switchTab("login"));
+  signupTab.addEventListener("click", () => switchTab("signup"));
+
+  loginForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    setMessage("로그인 중입니다…");
+    try {
+      const email = document.getElementById("loginEmail").value.trim();
+      const password = document.getElementById("loginPassword").value;
+      await signInWithEmailAndPassword(auth, email, password);
+      setMessage("로그인되었습니다. 복습 공간을 엽니다.", "ok");
+      setTimeout(() => { closeModal(); goReviewRoom(); }, 500);
+    } catch (err) {
+      setMessage(authErrorMessage(err), "error");
+    }
+  });
+
+  signupForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const name = document.getElementById("signupName").value.trim();
+    const email = document.getElementById("signupEmail").value.trim();
+    const password = document.getElementById("signupPassword").value;
+    const password2 = document.getElementById("signupPassword2").value;
+
+    if (!name) return setMessage("이름을 입력해 주세요.", "error");
+    if (password !== password2) return setMessage("비밀번호가 서로 다릅니다.", "error");
+
+    setMessage("회원가입 중입니다…");
+    try {
+      const cred = await createUserWithEmailAndPassword(auth, email, password);
+      await updateProfile(cred.user, { displayName: name });
+
+      await setDoc(doc(db, "users", cred.user.uid), {
+        name,
+        email,
+        createdAt: serverTimestamp(),
+        provider: "password"
+      }, { merge: true });
+
+      setMessage("회원가입이 완료되었습니다. 복습 공간을 엽니다.", "ok");
+      setTimeout(() => { closeModal(); goReviewRoom(); }, 600);
+    } catch (err) {
+      setMessage(authErrorMessage(err), "error");
+    }
+  });
+
+
+  enterReviewBtn.addEventListener("click", () => {
+    closeModal();
+    goReviewRoom();
+  });
+
+  logoutBtn.addEventListener("click", async () => {
+    try {
+      await signOut(auth);
+      setMessage("로그아웃되었습니다.", "ok");
+      showAuthForms();
+    } catch (err) {
+      setMessage("로그아웃 중 문제가 발생했습니다.", "error");
+    }
+  });
+
+  deleteAccountBtn.addEventListener("click", async () => {
+    const user = auth.currentUser;
+    if (!user) return;
+
+    const ok = confirm(
+      "회원탈퇴를 하면 계정과 저장된 이름·이메일 정보가 삭제됩니다.\n이 작업은 되돌릴 수 없습니다.\n계속하시겠습니까?"
+    );
+    if (!ok) return;
+
+    try {
+      setMessage("본인 확인 중입니다…");
+
+      const providerIds = (user.providerData || []).map(p => p.providerId);
+
+      // Google 로그인 사용자는 탈퇴 직전에 Google 계정으로 다시 본인 확인
+      if (providerIds.includes("google.com")) {
+        const provider = new GoogleAuthProvider();
+        await signInWithPopup(auth, provider);
+      }
+      // 이메일/비밀번호 사용자는 탈퇴 직전에 비밀번호로 다시 본인 확인
+      else if (providerIds.includes("password")) {
+        const password = prompt("회원탈퇴를 위해 현재 비밀번호를 다시 입력해 주세요.");
+        if (password === null) {
+          setMessage("회원탈퇴가 취소되었습니다.");
+          return;
+        }
+        if (!password) {
+          setMessage("비밀번호를 입력해 주세요.", "error");
+          return;
+        }
+        const credential = EmailAuthProvider.credential(user.email, password);
+        await reauthenticateWithCredential(user, credential);
+      }
+
+      setMessage("회원탈퇴 처리 중입니다…");
+
+      // 재인증이 끝난 뒤 Firestore 사용자 정보와 Firebase 계정을 함께 삭제
+      await deleteDoc(doc(db, "users", user.uid));
+      await deleteUser(user);
+
+      alert("회원탈퇴가 완료되었습니다.");
+      closeModal();
+      showAuthForms();
+    } catch (err) {
+      const code = err && err.code ? err.code : "";
+
+      if (code === "auth/invalid-credential" || code === "auth/wrong-password") {
+        setMessage("비밀번호가 맞지 않습니다. 다시 확인해 주세요.", "error");
+      } else if (code === "auth/popup-closed-by-user") {
+        setMessage("본인 확인 창이 닫혀 회원탈퇴가 취소되었습니다.", "error");
+      } else if (code === "auth/requires-recent-login") {
+        setMessage("보안을 위해 다시 로그인한 뒤 회원탈퇴를 진행해 주세요.", "error");
+      } else {
+        setMessage("회원탈퇴 중 문제가 발생했습니다. 잠시 후 다시 시도해 주세요.", "error");
+      }
+    }
+  });
+
+  googleBtn.addEventListener("click", async () => {
+    setMessage("Google 로그인 창을 여는 중입니다…");
+    try {
+      const provider = new GoogleAuthProvider();
+      const cred = await signInWithPopup(auth, provider);
+
+      await setDoc(doc(db, "users", cred.user.uid), {
+        name: cred.user.displayName || "",
+        email: cred.user.email || "",
+        createdAt: serverTimestamp(),
+        provider: "google"
+      }, { merge: true });
+
+      setMessage("로그인되었습니다. 복습 공간을 엽니다.", "ok");
+      setTimeout(() => { closeModal(); goReviewRoom(); }, 500);
+    } catch (err) {
+      setMessage(authErrorMessage(err), "error");
+    }
+  });
+
+  function authErrorMessage(err){
+    const code = err && err.code ? err.code : "";
+    const map = {
+      "auth/invalid-credential": "이메일 또는 비밀번호를 확인해 주세요.",
+      "auth/user-not-found": "가입된 계정을 찾을 수 없습니다.",
+      "auth/wrong-password": "비밀번호를 확인해 주세요.",
+      "auth/email-already-in-use": "이미 가입된 이메일입니다. 로그인해 주세요.",
+      "auth/weak-password": "비밀번호는 6자 이상으로 만들어 주세요.",
+      "auth/invalid-email": "이메일 주소 형식을 확인해 주세요.",
+      "auth/popup-closed-by-user": "Google 로그인 창이 닫혔습니다.",
+      "auth/popup-blocked": "팝업이 차단되었습니다. 브라우저에서 팝업을 허용해 주세요.",
+      "auth/unauthorized-domain": "현재 사이트 주소가 Firebase 허용 도메인에 등록되지 않았습니다."
+    };
+    return map[code] || "처리 중 문제가 발생했습니다. 잠시 후 다시 시도해 주세요.";
+  }
 </script>
 </body>
 </html>

@@ -611,3 +611,73 @@
   .nav-cards{grid-template-columns:1fr}
   .contact-cta{padding:28px}
 }
+
+
+/* ===== CLASSROOM · Firebase 로그인 / 계정 관리 ===== */
+.review-room-card{
+    text-decoration:none;
+    color:inherit;
+    cursor:pointer;
+    transition:transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+  }
+  .review-room-card:hover{
+    transform:translateY(-4px);
+    box-shadow:0 16px 36px rgba(46,40,32,.10);
+  }
+  .review-room-card .go{
+    display:inline-block;
+    margin-top:10px;
+    font-weight:700;
+  }
+
+.auth-modal{position:fixed;inset:0;z-index:9999;display:none;align-items:center;justify-content:center;padding:22px}
+  .auth-modal.show{display:flex}
+  .auth-backdrop{position:absolute;inset:0;background:rgba(31,27,22,.48);backdrop-filter:blur(5px)}
+  .auth-panel{position:relative;width:min(460px,100%);max-height:92vh;overflow:auto;background:#fffdf8;border:1px solid #eadfce;border-radius:28px;padding:34px;box-shadow:0 28px 70px rgba(34,28,21,.22)}
+  .auth-close{position:absolute;right:18px;top:14px;border:0;background:transparent;font-size:30px;line-height:1;color:#6f6254;cursor:pointer}
+  .auth-brand{font-family:"Gowun Batang",serif;font-weight:700;color:#9b6d55;font-size:15px;letter-spacing:.02em;margin-bottom:8px}
+  .auth-panel h2{font-family:"Gowun Batang",serif;font-size:30px;margin:0 0 8px;color:#211b17}
+  .auth-lead{margin:0 0 22px;color:#786858;line-height:1.65}
+  .auth-tabs{display:grid;grid-template-columns:1fr 1fr;background:#f4eee5;border-radius:14px;padding:4px;margin-bottom:20px}
+  .auth-tab{border:0;background:transparent;border-radius:10px;padding:11px;font-weight:700;color:#7a6a5d;cursor:pointer}
+  .auth-tab.active{background:#fff;box-shadow:0 3px 10px rgba(41,34,27,.08);color:#2b241e}
+  .auth-form{display:grid;gap:14px}
+  .auth-form.hidden{display:none}
+  .auth-form label{display:grid;gap:7px;font-size:14px;font-weight:700;color:#4f443a}
+  .auth-form input{width:100%;box-sizing:border-box;border:1px solid #ddd0bf;border-radius:13px;padding:13px 14px;font:inherit;background:#fff;outline:none}
+  .auth-form input:focus{border-color:#9bb7a3;box-shadow:0 0 0 3px rgba(155,183,163,.16)}
+  .auth-primary{border:0;border-radius:14px;padding:14px 16px;background:#93b09c;color:#fff;font-weight:800;font-size:15px;cursor:pointer;margin-top:3px}
+  .auth-primary:hover{filter:brightness(.96)}
+  .auth-divider{display:flex;align-items:center;gap:12px;margin:20px 0 16px;color:#a29486;font-size:12px}
+  .auth-divider:before,.auth-divider:after{content:"";height:1px;flex:1;background:#e8ded1}
+  .google-login{width:100%;border:1px solid #d9d3ca;background:#fff;border-radius:14px;padding:13px 16px;font-weight:700;color:#3a342f;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px}
+  .google-g{font-weight:900;color:#4285f4;font-size:18px}
+  .auth-message{min-height:20px;margin:14px 0 0;text-align:center;font-size:13px;font-weight:700}
+  .auth-message.error{color:#b94747}
+  .auth-message.ok{color:#4f7a5c}
+  .auth-note{margin:14px 0 0;font-size:12px;line-height:1.55;color:#948678;text-align:center}
+  @media(max-width:560px){.auth-panel{padding:28px 20px 24px;border-radius:22px}.auth-panel h2{font-size:26px}}
+
+.account-panel.hidden{display:none}
+  .account-panel{display:grid;gap:12px}
+  .account-card{display:flex;align-items:center;gap:13px;padding:14px;border:1px solid #e8ded1;border-radius:16px;background:#fff}
+  .account-avatar{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:#eef5ef;font-size:21px}
+  .account-card strong{display:block;font-size:16px;color:#2c251f}
+  .account-card p{margin:3px 0 0;color:#7b6e62;font-size:13px;word-break:break-all}
+  .auth-secondary{border:1px solid #cfc5b8;border-radius:14px;padding:13px 16px;background:#fff;color:#4c433b;font-weight:800;cursor:pointer}
+  .auth-danger{border:1px solid #d9aaa4;border-radius:14px;padding:13px 16px;background:#fff7f5;color:#a94f45;font-weight:800;cursor:pointer}
+  .auth-danger:hover{background:#fff0ed}
+
+.account-open-btn{
+    margin-left:10px;
+    border:1px solid #d8cbbb;
+    background:#fffdf8;
+    color:#5d5147;
+    border-radius:999px;
+    padding:8px 13px;
+    font:inherit;
+    font-size:13px;
+    font-weight:700;
+    cursor:pointer;
+  }
+  .account-open-btn:hover{background:#f7f1e8}
