@@ -227,7 +227,7 @@
   } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
 
   const firebaseConfig = {
-    apiKey: "AIzaSyBLEEnZPMhqdTF_4hJhkt9MaJ4K_v30U0I",
+    apiKey: "AIzaSyBlEEnZPMhqdTF_4hJhkt9MaJ4K_v30U0I",
     authDomain: "young2026-reviewroom.firebaseapp.com",
     projectId: "young2026-reviewroom",
     storageBucket: "young2026-reviewroom.firebasestorage.app",
@@ -504,7 +504,7 @@
       "auth/popup-blocked": "팝업이 차단되었습니다. 브라우저에서 팝업을 허용해 주세요.",
       "auth/unauthorized-domain": "현재 사이트 주소가 Firebase 허용 도메인에 등록되지 않았습니다."
     };
-    return map[code] || `오류: ${code || "unknown"}${err && err.message ? " · " + err.message : ""}`;
+    return map[code] || "처리 중 문제가 발생했습니다. 잠시 후 다시 시도해 주세요.";
   }
 </script>
 </body>
