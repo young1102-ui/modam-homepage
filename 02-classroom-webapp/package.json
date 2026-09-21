@@ -1,0 +1,1 @@
+{"name":"modam-classroom-firebase","version":"1.0.0","private":true,"description":"MODAM classroom gate using Firebase Auth + Firestore and Vercel Functions","engines":{"node":">=20"},"dependencies":{"firebase-admin":"^13.0.0"}}
